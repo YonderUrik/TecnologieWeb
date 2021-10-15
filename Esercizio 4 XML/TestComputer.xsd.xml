@@ -1,0 +1,9 @@
+<computer tipologia="desktop">
+  <modello>string</modello>
+  <!--Optional:-->
+  <RAM>201</RAM>
+  <periferiche>
+    <!--Zero or more repetitions:-->
+    <periferica>string</periferica>
+  </periferiche>
+</computer>

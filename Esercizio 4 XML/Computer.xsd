@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:element name="computer" type="ComputerType"/>
+    <xsd:complexType name="ComputerType">
+        <xsd:sequence>
+            <xsd:element name="modello" type="xsd:string"/>
+            <xsd:element name="RAM" type="xsd:positiveInteger" minOccurs="0"/>
+            <xsd:element name="periferiche" type="PerifericheType"/>
+        </xsd:sequence>
+        <xsd:attribute name="tipologia" type="TipologiaType"/>
+    </xsd:complexType>
+    <xsd:simpleType name="TipologiaType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="desktop"/>
+            <xsd:enumeration value="portatile"/>
+            <xsd:enumeration value="tablet"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="PerifericheType">
+        <xsd:sequence>
+            <xsd:element name="periferica" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,39 @@
+header{
+    width: 100%;
+    background: yellow;
+    text-align: center;
+}
+header h1{
+    color: red;
+}
+header h2{
+    font-weight: lighter;
+}
+nav{
+    font-size: large;
+    float: left;
+    width: 19%;
+}
+article{
+    width: 50%;
+    border: 2px solid black;
+    margin: 10px;
+    display: inline-block;
+
+}
+article h1{
+    color: red;
+}
+figure{
+    border: 2px solid black;
+    width: 19%;
+    float: right;
+}
+
+footer{
+    width: 100%;
+    padding: 15px;
+    background: yellow;
+    clear: both;
+    font-size: large;
+}

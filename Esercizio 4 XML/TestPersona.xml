@@ -1,0 +1,11 @@
+<persona genere="F">
+  <cognome>string</cognome>
+  <nome>string</nome>
+  <!--Optional:-->
+  <soprannome>string</soprannome>
+  <Indirizzi>
+    <città>string</città>
+    <via>string</via>
+    <numero>string</numero>
+  </Indirizzi>
+</persona>

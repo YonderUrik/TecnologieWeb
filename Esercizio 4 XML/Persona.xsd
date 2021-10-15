@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="persona" type="PersonaType"/>
+    <xsd:complexType name="PersonaType">
+        <xsd:sequence>
+            <xsd:element name="cognome" type="xsd:string"/>
+            <xsd:element name="nome" type="xsd:string"/>
+            <xsd:element name="soprannome" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Indirizzi" type="IndirizziType"/>
+        </xsd:sequence>
+        <xsd:attribute name="genere" type="GenereType"/>
+    </xsd:complexType>
+    <xsd:complexType name="IndirizziType">
+        <xsd:sequence>
+            <xsd:element name="città" type="xsd:string"/>
+            <xsd:element name="via" type="xsd:string"/>
+            <xsd:element name="numero" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="GenereType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="F"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
