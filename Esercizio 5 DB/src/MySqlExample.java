@@ -1,5 +1,6 @@
 import dao.Corso;
 import dao.DAO;
+import dao.Docente;
 
 import java.util.ArrayList;
 
@@ -14,15 +15,25 @@ public class MySqlExample {
             DAO.registerDriver();
 
 
-            //DAO.setTuplaCorso("Daniele");
-            //DAO.setTuplaCorso("Marco");
+            DAO.setTuplaCorso("Iterazione Uomo Macchina");
+            //DAO.setTuplaCorso("Tecnologie Web");
 
-            //DAO.deleteTuplaCorso(7);
+            DAO.deleteTuplaCorso("Iterazione Uomo Macchina");
 
             //PRINT
             ArrayList<Corso> corsi = DAO.getTupleCorso();
             for (Corso c: corsi)
                 System.out.println(c);
-            System.out.println("FINE");
+            System.out.println("FINE STAMPA CORSI");
+
+            //DAO.setTuplaDocente("Liliana", "Ardissono");
+            DAO.setTuplaDocente("Daniele", "Roccaforte");
+
+            DAO.deleteTuplaDocente("Daniele", "Roccaforte");
+
+            ArrayList<Docente> docenti = DAO.getTupleDocente();
+            for (Docente d: docenti)
+                System.out.println(d);
+            System.out.println("FINE STAMPA DOCENTI");
         }
 }

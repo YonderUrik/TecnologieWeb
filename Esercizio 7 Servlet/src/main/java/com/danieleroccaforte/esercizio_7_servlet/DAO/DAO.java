@@ -1,4 +1,4 @@
-package dao;
+package com.danieleroccaforte.esercizio_7_servlet.DAO;
 
 import com.mysql.jdbc.Connection;
 
@@ -157,5 +157,102 @@ public class DAO {
                 }
             }
         }
+    }
+
+    public static ArrayList<Insegnamento> getTupleInsegnamento(){
+        Connection conn1 = null;
+        ArrayList<Insegnamento> out = new ArrayList<>();
+        try {
+            conn1 = (Connection) DriverManager.getConnection(url, user, password);
+            Statement st = conn1.createStatement();
+            ResultSet rs = st.executeQuery("SELECT courses.name, teachers.name, teachers.surname FROM (teachers join teaching on (teachers.id = teaching.teacher)) join courses on (courses.id = teaching.course)");
+            while (rs.next()) {
+                Insegnamento p = new Insegnamento(rs.getString("courses.name"), rs.getString("teachers.name"), rs.getString("teachers.surname"));
+                out.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            if (conn1 != null) {
+                try {
+                    conn1.close();
+                } catch (SQLException e2) {
+                    System.out.println(e2.getMessage());
+                }
+            }
+        }
+        return out;
+    }
+
+    public static void setTuplaInsegnamento(int course, int teacher){
+        Connection conn1 = null;
+        try {
+            conn1 = (Connection) DriverManager.getConnection(url, user, password);
+            Statement st = conn1.createStatement();
+            st.executeUpdate("INSERT INTO teaching (course, teacher ) VALUES ("+course+", " +teacher+" )");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            if (conn1 != null) {
+                try {
+                    conn1.close();
+                } catch (SQLException e2) {
+                    System.out.println(e2.getMessage());
+                }
+            }
+        }
+    }
+
+    public static void deleteTuplaInsegnamento(int course, int teacher){
+        Connection conn1 = null;
+        try {
+            conn1 = (Connection) DriverManager.getConnection(url, user, password);
+            Statement st = conn1.createStatement();
+            st.executeUpdate("DELETE FROM teaching WHERE course = "+course+"and teacher = "+teacher+"");
+            st.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            if (conn1 != null) {
+                try {
+                    conn1.close();
+                } catch (SQLException e2) {
+                    System.out.println(e2.getMessage());
+                }
+            }
+        }
+    }
+    /*
+    public static ArrayList<Insegnamento> getPrenotazioniperCorso(){
+    }*/
+
+    public static ArrayList<Utente> getUtente(String email, String u_password){
+        Connection conn1 = null;
+        ArrayList<Utente> out = new ArrayList<>();
+        try {
+            conn1 = (Connection) DriverManager.getConnection(url, user, password);
+            Statement st = conn1.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users where email = '" + email + "' and password = '" + u_password + "'");
+            while (rs.next()) {
+                Utente p = new Utente(rs.getInt("id"), rs.getString("name"), rs.getString("surname") , rs.getString("email"), rs.getString("password"), rs.getString("role"));
+                out.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            if (conn1 != null) {
+                try {
+                    conn1.close();
+                } catch (SQLException e2) {
+                    System.out.println(e2.getMessage());
+                }
+            }
+        }
+        return out;
     }
 }
